@@ -1,6 +1,10 @@
 package com.zzhow.tliasitheima.mapper;
 
+import com.zzhow.tliasitheima.pojo.Dept;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * @author ZZHow
@@ -8,4 +12,11 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface DeptMapper {
+    /**
+     * 查询所有员工数据
+     *
+     * @return List<Dept>员工数据
+     */
+    @Select("select * from dept")
+    List<Dept> selectAll();
 }
