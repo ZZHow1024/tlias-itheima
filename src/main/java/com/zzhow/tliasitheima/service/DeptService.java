@@ -12,7 +12,14 @@ public interface DeptService {
     /**
      * 查询所有部门信息
      *
-     * @return List<Dept>员工数据
+     * @return List<Dept>部门数据
      */
     List<Dept> findAll();
+
+    /**
+     * 删除指定 ID 的部门
+     *
+     * @param id
+     */
+    void delete(Integer id);
 }

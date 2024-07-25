@@ -27,6 +27,7 @@ public class DeptController {
 
     /**
      * 查询全部部门数据
+     *
      * @return JSON全部部门数据
      */
     //@RequestMapping(value = "depts", method = RequestMethod.GET)
@@ -38,5 +39,20 @@ public class DeptController {
         List<Dept> deptList = deptService.findAll();
 
         return Result.success(deptList);
+    }
+
+    /**
+     * 删除指定 ID 的部门
+     *
+     * @param id
+     * @return null
+     */
+    @DeleteMapping("/depts/{id}")
+    public Result delete(@PathVariable Integer id) {
+        log.info("删除 id = " + id + " 的部门");
+
+        deptService.delete(id);
+
+        return Result.success();
     }
 }
