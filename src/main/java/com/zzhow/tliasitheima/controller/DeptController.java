@@ -5,10 +5,7 @@ import com.zzhow.tliasitheima.pojo.Result;
 import com.zzhow.tliasitheima.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -49,9 +46,26 @@ public class DeptController {
      */
     @DeleteMapping("/depts/{id}")
     public Result delete(@PathVariable Integer id) {
-        log.info("删除 id = " + id + " 的部门");
+        log.info("删除 id = {} 的部门", id);
 
+        //调用 service 删除部门
         deptService.delete(id);
+
+        return Result.success();
+    }
+
+    /**
+     * 添加部门
+     *
+     * @param dept
+     * @return null
+     */
+    @PostMapping("/depts")
+    public Result add(@RequestBody Dept dept) {
+        log.info("添加部门：{}", dept);
+
+        //调用 service 添加部门
+        deptService.add(dept);
 
         return Result.success();
     }
