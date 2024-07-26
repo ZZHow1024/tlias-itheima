@@ -15,9 +15,9 @@ import java.util.List;
 @Mapper
 public interface DeptMapper {
     /**
-     * 查询所有员工数据
+     * 查询全部部门数据
      *
-     * @return List<Dept>员工数据
+     * @return (List<Dept>)全部部门数据
      */
     @Select("select * from dept")
     List<Dept> selectAll();
@@ -37,4 +37,13 @@ public interface DeptMapper {
      */
     @Insert("insert into dept(name, create_time, update_time) VALUES(#{name}, #{createTime}, #{updateTime})")
     void insert(Dept dept);
+
+    /**
+     * 根据 ID 查询部门信息
+     *
+     * @param id
+     * @return (List<Dept>)指定 ID 的部门数据
+     */
+    @Select("select * from dept where id = #{id}")
+    List<Dept> selectById(Integer id);
 }

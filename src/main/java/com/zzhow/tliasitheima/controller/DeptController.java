@@ -15,6 +15,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
+@RequestMapping("/depts")
 public class DeptController {
     //日志对象
     //private static final Logger log = LoggerFactory.getLogger(DeptController.class);
@@ -25,10 +26,10 @@ public class DeptController {
     /**
      * 查询全部部门数据
      *
-     * @return JSON全部部门数据
+     * @return (JSON)全部部门数据
      */
     //@RequestMapping(value = "depts", method = RequestMethod.GET)
-    @GetMapping("depts")
+    @GetMapping
     public Result list() {
         log.info("查询全部部门数据");
 
@@ -44,7 +45,7 @@ public class DeptController {
      * @param id
      * @return null
      */
-    @DeleteMapping("/depts/{id}")
+    @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id) {
         log.info("删除 id = {} 的部门", id);
 
@@ -60,7 +61,7 @@ public class DeptController {
      * @param dept
      * @return null
      */
-    @PostMapping("/depts")
+    @PostMapping
     public Result add(@RequestBody Dept dept) {
         log.info("添加部门：{}", dept);
 
@@ -68,5 +69,21 @@ public class DeptController {
         deptService.add(dept);
 
         return Result.success();
+    }
+
+    /**
+     * 根据 ID 查询部门信息
+     *
+     * @param id
+     * @return (JSON)指定 ID 的部门数据
+     */
+    @GetMapping("/{id}")
+    public Result get(@PathVariable Integer id) {
+        log.info("查询 ID 为 {} 的部门信息", id);
+
+        //调用 service 根据 ID 查询
+        List<Dept> deptList = deptService.get(id);
+
+        return Result.success(deptList);
     }
 }

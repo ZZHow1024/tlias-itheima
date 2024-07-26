@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface DeptService {
     /**
-     * 查询所有部门信息
+     * 查询全部部门数据
      *
-     * @return List<Dept>部门数据
+     * @return List<Dept>全部部门数据
      */
     List<Dept> findAll();
 
@@ -29,4 +29,12 @@ public interface DeptService {
      * @param dept
      */
     void add(Dept dept);
+
+    /**
+     * 根据 ID 查询部门信息
+     *
+     * @param id
+     * @return (List<Dept>)指定 ID 的部门数据
+     */
+    List<Dept> get(Integer id);
 }
