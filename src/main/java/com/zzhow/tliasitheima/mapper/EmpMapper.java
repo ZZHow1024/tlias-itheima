@@ -4,6 +4,7 @@ import com.zzhow.tliasitheima.pojo.Emp;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -36,7 +37,7 @@ public interface EmpMapper {
      *
      * @return List<Emp>-分页列表数据
      */
-    @Select("select id, username, password, name, gender, image, job, entry_date, dept_id, create_time, update_time" +
-            " from emp")
-    List<Emp> list();
+/*   @Select("select id, username, password, name, gender, image, job, entry_date, dept_id, create_time, update_time" +
+            " from emp")*/
+    List<Emp> list(String name, Short gender, LocalDate begin, LocalDate end);
 }

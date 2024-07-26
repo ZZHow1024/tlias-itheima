@@ -1,8 +1,8 @@
 package com.zzhow.tliasitheima.service;
 
-import com.zzhow.tliasitheima.mapper.EmpMapper;
 import com.zzhow.tliasitheima.pojo.PageBean;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.time.LocalDate;
 
 /**
  * @author ZZHow
@@ -16,5 +16,5 @@ public interface EmpService {
      * @param pageSize
      * @return PageBean-员工总数、员工信息
      */
-    public PageBean page(Integer page, Integer pageSize);
+    public PageBean page(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end);
 }
