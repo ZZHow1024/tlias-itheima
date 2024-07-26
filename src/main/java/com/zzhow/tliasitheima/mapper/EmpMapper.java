@@ -53,5 +53,5 @@ public interface EmpMapper {
      *
      * @param emp
      */
-    void add(Emp emp);
+    void insert(Emp emp);
 }
