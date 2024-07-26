@@ -73,4 +73,19 @@ public class EmpController {
 
         return Result.success();
     }
+
+    /**
+     * 根据 ID 查询员工信息
+     *
+     * @param id-员工 ID
+     * @return JSON-员工信息
+     */
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable Integer id) {
+        log.info("根据 ID 查询员工信息：id = {}", id);
+
+        Emp emp = empService.getById(id);
+
+        return Result.success(emp);
+    }
 }

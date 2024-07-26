@@ -35,4 +35,21 @@
         values (#{username}, #{name}, #{gender}, #{image}, #{job}, #{entryDate}, #{deptId}, #{createTime},
                 #{updateTime})
     </insert>
+
+    <!-- 根据 ID 查询员工信息 -->
+    <select id="selectById" resultType="com.zzhow.tliasitheima.pojo.Emp">
+        select id,
+               username,
+               password,
+               name,
+               gender,
+               image,
+               job,
+               entry_date,
+               dept_id,
+               create_time,
+               update_time
+        from emp
+        where id = #{id}
+    </select>
 </mapper>
