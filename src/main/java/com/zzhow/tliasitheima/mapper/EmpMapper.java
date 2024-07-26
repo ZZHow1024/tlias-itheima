@@ -40,4 +40,11 @@ public interface EmpMapper {
 /*   @Select("select id, username, password, name, gender, image, job, entry_date, dept_id, create_time, update_time" +
             " from emp")*/
     List<Emp> list(String name, Short gender, LocalDate begin, LocalDate end);
+
+    /**
+     * 删除指定 ID 的员工
+     *
+     * @param ids
+     */
+    void delete(List<Integer> ids);
 }

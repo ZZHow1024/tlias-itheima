@@ -3,6 +3,7 @@ package com.zzhow.tliasitheima.service;
 import com.zzhow.tliasitheima.pojo.PageBean;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author ZZHow
@@ -16,5 +17,12 @@ public interface EmpService {
      * @param pageSize
      * @return PageBean-员工总数、员工信息
      */
-    public PageBean page(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end);
+    PageBean page(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end);
+
+    /**
+     * 删除指定 ID 的员工
+     *
+     * @param ids
+     */
+    void delete(List<Integer> ids);
 }
