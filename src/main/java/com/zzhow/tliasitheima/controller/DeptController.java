@@ -86,4 +86,20 @@ public class DeptController {
 
         return Result.success(deptList);
     }
+
+    /**
+     * 修改部门
+     *
+     * @param dept
+     * @return null
+     */
+    @PutMapping
+    public Result update(@RequestBody Dept dept) {
+        log.info("修改 ID 为 {} 的部门信息，部门名称修改为 {}", dept.getId(), dept.getName());
+
+        //调用 service 修改部门
+        deptService.update(dept);
+
+        return Result.success();
+    }
 }

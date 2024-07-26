@@ -12,7 +12,7 @@ public interface DeptService {
     /**
      * 查询全部部门数据
      *
-     * @return List<Dept>全部部门数据
+     * @return (List <Dept>)全部部门数据
      */
     List<Dept> findAll();
 
@@ -34,7 +34,14 @@ public interface DeptService {
      * 根据 ID 查询部门信息
      *
      * @param id
-     * @return (List<Dept>)指定 ID 的部门数据
+     * @return (List <Dept>)指定 ID 的部门数据
      */
     List<Dept> get(Integer id);
+
+    /**
+     * 修改部门
+     *
+     * @param dept
+     */
+    void update(Dept dept);
 }
