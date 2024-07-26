@@ -1,6 +1,10 @@
 package com.zzhow.tliasitheima.mapper;
 
+import com.zzhow.tliasitheima.pojo.Emp;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * @author ZZHow
@@ -8,4 +12,22 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface EmpMapper {
+    /**
+     * 查询总记录数
+     *
+     * @return Long-总记录数
+     */
+    @Select("select count(*) from emp")
+    public Long count();
+
+    /**
+     * 分页查询，获取列表数据
+     *
+     * @param start
+     * @param pageSize
+     * @return List<Emp>-分页列表数据
+     */
+    @Select("select id, username, password, name, gender, image, job, entry_date, dept_id, create_time, update_time" +
+            " from emp limit #{start}, #{pageSize}")
+    public List<Emp> page(Integer start, Integer pageSize);
 }
