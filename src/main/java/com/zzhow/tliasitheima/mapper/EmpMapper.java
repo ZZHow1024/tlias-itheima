@@ -47,4 +47,11 @@ public interface EmpMapper {
      * @param ids
      */
     void delete(List<Integer> ids);
+
+    /**
+     * 添加部门
+     *
+     * @param emp
+     */
+    void add(Emp emp);
 }

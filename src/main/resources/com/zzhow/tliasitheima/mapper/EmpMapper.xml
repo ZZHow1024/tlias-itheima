@@ -28,4 +28,11 @@
             #{id}
         </foreach>
     </delete>
+
+    <!-- 添加员工 -->
+    <insert id="add">
+        insert into emp (username, name, gender, image, job, entry_date, dept_id, create_time, update_time)
+        values (#{username}, #{name}, #{gender}, #{image}, #{job}, #{entryDate}, #{deptId}, #{createTime},
+                #{updateTime})
+    </insert>
 </mapper>

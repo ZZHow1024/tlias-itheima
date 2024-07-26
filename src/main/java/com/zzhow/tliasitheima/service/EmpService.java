@@ -1,5 +1,6 @@
 package com.zzhow.tliasitheima.service;
 
+import com.zzhow.tliasitheima.pojo.Emp;
 import com.zzhow.tliasitheima.pojo.PageBean;
 
 import java.time.LocalDate;
@@ -25,4 +26,11 @@ public interface EmpService {
      * @param ids
      */
     void delete(List<Integer> ids);
+
+    /**
+     * 添加员工
+     *
+     * @param emp
+     */
+    void add(Emp emp);
 }

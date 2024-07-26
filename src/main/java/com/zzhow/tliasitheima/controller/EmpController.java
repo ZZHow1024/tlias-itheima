@@ -1,5 +1,6 @@
 package com.zzhow.tliasitheima.controller;
 
+import com.zzhow.tliasitheima.pojo.Emp;
 import com.zzhow.tliasitheima.pojo.PageBean;
 import com.zzhow.tliasitheima.pojo.Result;
 import com.zzhow.tliasitheima.service.EmpService;
@@ -54,6 +55,21 @@ public class EmpController {
         log.info("删除 id = {} 的员工", ids);
 
         empService.delete(ids);
+
+        return Result.success();
+    }
+
+    /**
+     * 添加员工
+     *
+     * @param emp
+     * @return null
+     */
+    @PostMapping
+    public Result add(@RequestBody Emp emp) {
+        log.info("添加员工：{}", emp);
+
+        empService.add(emp);
 
         return Result.success();
     }

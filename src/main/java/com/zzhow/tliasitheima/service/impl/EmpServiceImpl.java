@@ -7,9 +7,11 @@ import com.zzhow.tliasitheima.pojo.Emp;
 import com.zzhow.tliasitheima.pojo.PageBean;
 import com.zzhow.tliasitheima.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -49,5 +51,12 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public void delete(List<Integer> ids) {
         empMapper.delete(ids);
+    }
+
+    @Override
+    public void add(Emp emp) {
+        emp.setCreateTime(LocalDateTime.now());
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.add(emp);
     }
 }
