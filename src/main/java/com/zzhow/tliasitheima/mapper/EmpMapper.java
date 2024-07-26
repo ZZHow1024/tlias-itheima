@@ -18,7 +18,7 @@ public interface EmpMapper {
      * @return Long-总记录数
      */
     @Select("select count(*) from emp")
-    public Long count();
+    Long count();
 
     /**
      * 分页查询，获取列表数据
@@ -27,7 +27,16 @@ public interface EmpMapper {
      * @param pageSize
      * @return List<Emp>-分页列表数据
      */
-    @Select("select id, username, password, name, gender, image, job, entry_date, dept_id, create_time, update_time" +
+/*   @Select("select id, username, password, name, gender, image, job, entry_date, dept_id, create_time, update_time" +
             " from emp limit #{start}, #{pageSize}")
-    public List<Emp> page(Integer start, Integer pageSize);
+     List<Emp> page(Integer start, Integer pageSize);*/
+
+    /**
+     * 分页查询，获取列表数据（使用 PageHelper）
+     *
+     * @return List<Emp>-分页列表数据
+     */
+    @Select("select id, username, password, name, gender, image, job, entry_date, dept_id, create_time, update_time" +
+            " from emp")
+    List<Emp> list();
 }

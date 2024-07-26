@@ -1,5 +1,7 @@
 package com.zzhow.tliasitheima.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.zzhow.tliasitheima.mapper.EmpMapper;
 import com.zzhow.tliasitheima.pojo.Emp;
 import com.zzhow.tliasitheima.pojo.PageBean;
@@ -18,7 +20,7 @@ public class EmpServiceImpl implements EmpService {
     @Autowired
     private EmpMapper empMapper;
 
-    @Override
+/*  @Override
     public PageBean page(Integer page, Integer pageSize) {
         //1. 获取总记录数
         Long count = empMapper.count();
@@ -27,8 +29,19 @@ public class EmpServiceImpl implements EmpService {
         List<Emp> empList = empMapper.page((page - 1) * pageSize, pageSize);
 
         //3. 封装 PageBean 对象
-        PageBean pageBean = new PageBean(count, empList);
+        return new PageBean(count, empList);
+    }*/
 
-        return pageBean;
+    @Override
+    public PageBean page(Integer page, Integer pageSize) {
+        //1. 设置分页参数
+        PageHelper.startPage(page, pageSize);
+
+        //2. 执行查询
+        List<Emp> empList = empMapper.list();
+        Page<Emp> p = (Page<Emp>) empList;
+
+        //3. 封装 PageBean 对象
+        return new PageBean(p.getTotal(), p.getResult());
     }
 }
