@@ -48,4 +48,12 @@ public interface EmpService {
      * @param emp-员工信息
      */
     void update(Emp emp);
+
+    /**
+     * 员工登录
+     *
+     * @param emp-用户名和密码
+     * @return Emp-员工信息
+     */
+    Emp login(Emp emp);
 }

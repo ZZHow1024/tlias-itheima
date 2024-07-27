@@ -40,8 +40,8 @@ public class Result {
         return new Result(500, msg, data);
     }
 
-    public static Result loginSuccessful() {
-        return new Result(200, "Login successful", null);
+    public static Result loginSuccessful(Object data) {
+        return new Result(200, "Login successful", data);
     }
 
     public static Result loginFailed() {

@@ -69,4 +69,12 @@ public interface EmpMapper {
      * @param emp-员工信息
      */
     void update(Emp emp);
+
+    /**
+     * 通过用户名和密码查询员工信息
+     *
+     * @param emp-用户名和密码
+     * @return Emp-用户信息
+     */
+    Emp selectByUsernameAndPassword(Emp emp);
 }
