@@ -1,5 +1,6 @@
 package com.zzhow.tliasitheima.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +13,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Result {
+    @JSONField(ordinal = 1)
     private Integer status;
+    @JSONField(ordinal = 2)
     private String msg;
+    @JSONField(ordinal = 3)
     private Object data;
 
     public static Result success() {
@@ -46,5 +50,9 @@ public class Result {
 
     public static Result loginFailed() {
         return new Result(401, "Login failed", null);
+    }
+
+    public static Result unauthorized() {
+        return new Result(401, "Unauthorized", null);
     }
 }
