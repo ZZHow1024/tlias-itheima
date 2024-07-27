@@ -33,15 +33,15 @@ public class Result {
     }
 
     public static Result error() {
-        return new Result(500, "error", null);
+        return new Result(409, "error", null);
     }
 
     public static Result error(Object data) {
-        return new Result(500, "error", data);
+        return new Result(409, "error", data);
     }
 
     public static Result error(String msg, Object data) {
-        return new Result(500, msg, data);
+        return new Result(409, msg, data);
     }
 
     public static Result loginSuccessful(Object data) {
@@ -54,5 +54,9 @@ public class Result {
 
     public static Result unauthorized() {
         return new Result(401, "Unauthorized", null);
+    }
+
+    public static Result resourceNotFound() {
+        return new Result(404, "Resource Not Found", null);
     }
 }
