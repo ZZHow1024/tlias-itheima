@@ -62,4 +62,11 @@ public interface EmpMapper {
      * @return Emp-员工信息
      */
     Emp selectById(Integer id);
+
+    /**
+     * 修改员工信息
+     *
+     * @param emp-员工信息
+     */
+    void update(Emp emp);
 }
