@@ -1,7 +1,11 @@
 package com.zzhow.tliasitheima.util;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.security.SignatureException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +17,7 @@ import java.util.Map;
  * @author ZZHow
  * @date 2024/7/27
  */
+@Slf4j
 @Component
 public class JWTUtils {
     @Autowired
@@ -30,10 +35,26 @@ public class JWTUtils {
     }
 
     public Claims parseToken(String token) {
-        return (Claims) Jwts.parser()
-                .verifyWith(key)
-                .build()
-                .parse(token)
-                .getPayload();
+        Claims claims = null;
+
+        try {
+            claims = (Claims) Jwts.parser()
+                    .verifyWith(key)
+                    .build()
+                    .parse(token)
+                    .getPayload();
+        } catch (ExpiredJwtException e) {
+            log.info("JWT 令牌过期：{}", e.getMessage());
+        } catch(MalformedJwtException e) {
+            log.info("JWT 令牌格式无效：{}", e.getMessage());
+        } catch (SignatureException e) {
+            log.info("JWT 令牌签名验证失败：{}", e.getMessage());
+        } catch(SecurityException e) {
+            log.info("JWT 令牌安全性检查失败：{}", e.getMessage());
+        } catch(IllegalArgumentException e) {
+            log.info("JWT 令牌参数不合法：{}", e.getMessage());
+        }
+
+        return claims;
     }
 }
