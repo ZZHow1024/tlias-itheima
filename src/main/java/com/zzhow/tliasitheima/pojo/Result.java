@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Result {
-    private Integer code;
+    private Integer status;
     private String msg;
     private Object data;
 
@@ -24,19 +24,27 @@ public class Result {
         return new Result(200, "success", data);
     }
 
-    public static Result success(String msg) {
-        return new Result(200, "success", msg);
+    public static Result success(String msg, Object data) {
+        return new Result(200, msg, data);
     }
 
     public static Result error() {
         return new Result(500, "error", null);
     }
 
-    public static Result error(String msg) {
-        return new Result(500, "error", msg);
+    public static Result error(Object data) {
+        return new Result(500, "error", data);
     }
 
     public static Result error(String msg, Object data) {
-        return new Result(500, "error", msg);
+        return new Result(500, msg, data);
+    }
+
+    public static Result loginSuccessful() {
+        return new Result(200, "Login successful", null);
+    }
+
+    public static Result loginFailed() {
+        return new Result(401, "Login failed", null);
     }
 }
