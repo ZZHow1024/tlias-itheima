@@ -18,6 +18,11 @@
         </foreach>
     </delete>
 
+    <!-- 删除指定部门 ID 的员工 -->
+    <delete id="deleteByDeptId">
+        delete from emp where dept_id=#{id}
+    </delete>
+
     <!-- 修改员工信息（动态 SQL） -->
     <update id="update">
         update emp
