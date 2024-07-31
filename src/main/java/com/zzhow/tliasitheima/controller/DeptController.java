@@ -1,5 +1,6 @@
 package com.zzhow.tliasitheima.controller;
 
+import com.zzhow.tliasitheima.anno.Log;
 import com.zzhow.tliasitheima.pojo.Dept;
 import com.zzhow.tliasitheima.pojo.Result;
 import com.zzhow.tliasitheima.service.DeptService;
@@ -45,6 +46,7 @@ public class DeptController {
      * @param id
      * @return null
      */
+    @Log
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id) {
         log.info("删除 id = {} 的部门", id);
@@ -61,6 +63,7 @@ public class DeptController {
      * @param dept
      * @return null
      */
+    @Log
     @PostMapping
     public Result add(@RequestBody Dept dept) {
         log.info("添加部门：{}", dept);
@@ -93,6 +96,7 @@ public class DeptController {
      * @param dept
      * @return null
      */
+    @Log
     @PutMapping
     public Result update(@RequestBody Dept dept) {
         log.info("修改 ID 为 {} 的部门信息，部门名称修改为 {}", dept.getId(), dept.getName());

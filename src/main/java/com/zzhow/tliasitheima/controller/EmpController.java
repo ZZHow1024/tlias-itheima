@@ -1,5 +1,6 @@
 package com.zzhow.tliasitheima.controller;
 
+import com.zzhow.tliasitheima.anno.Log;
 import com.zzhow.tliasitheima.pojo.Emp;
 import com.zzhow.tliasitheima.pojo.PageBean;
 import com.zzhow.tliasitheima.pojo.Result;
@@ -50,6 +51,7 @@ public class EmpController {
      * @param ids
      * @return null
      */
+    @Log
     @DeleteMapping("/{ids}")
     public Result delete(@PathVariable List<Integer> ids) {
         log.info("删除 id = {} 的员工", ids);
@@ -65,6 +67,7 @@ public class EmpController {
      * @param emp
      * @return null
      */
+    @Log
     @PostMapping
     public Result add(@RequestBody Emp emp) {
         log.info("添加员工：{}", emp);
@@ -94,6 +97,7 @@ public class EmpController {
      * @param emp-员工信息
      * @return null
      */
+    @Log
     @PutMapping
     public Result update(@RequestBody Emp emp) {
         log.info("修改员工信息：emp = {}", emp);
