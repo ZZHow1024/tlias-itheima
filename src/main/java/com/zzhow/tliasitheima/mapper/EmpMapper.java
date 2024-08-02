@@ -77,4 +77,10 @@ public interface EmpMapper {
      * @return Emp-用户信息
      */
     Emp selectByUsernameAndPassword(Emp emp);
+
+    /**
+     * 通过部门 ID 删除该部门下的员工
+     * @param id-部门 ID
+     */
+    void deleteByDeptId(Integer id);
 }
